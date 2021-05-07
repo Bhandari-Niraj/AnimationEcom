@@ -1,0 +1,259 @@
+	<!DOCTYPE html>
+<head>
+	<title>
+	</title>
+  <style type="text/css">
+    label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:2px solid ;
+}
+  </style>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+</head>
+<body>
+<div class="row">
+<div class="design-controller col-md-2" >
+ <form action="" >
+  <div class="form-group" style="margin-left: 20px" style="">
+  <label>
+  <input type="radio" name="shirtFormation" value="ShortSleeve"/>
+  <img src="image/short.gif" height="80px" width="80px">
+</label>
+</div>
+<div class="form-group" style="margin-left: 20px" style="">
+  <label>
+  <input type="radio" name="shirtFormation" value="LongSleeves" />
+  <img src="image/full.gif" height="80px" width="80px">
+</label>
+</div>
+<div class="form-group" style="margin-left: 20px" style="">
+  <label>
+  <input type="radio" name="shirtFormation"  value="NecklinesBtn"  />
+  <img src="image/collar1.gif" height="80px" width="80px">
+</label>
+</div>
+<div class="form-group" style="margin-left: 20px" style="">
+  <label>
+  <input type="radio"   name="shirtFormation" value="NecklinesMao" />
+  <img src="image/collar2.gif" height="80px" width="80px">
+</label>
+</div>
+<div class="form-group" style="margin-left: 20px" style="">
+  <label>
+  <input type="radio"  name="shirtFormation" value="FitInside" checked />
+  <img src="image/slim.gif" height="80px" width="80px">
+</label>
+</div>
+<div class="form-group" style="margin-left: 20px" style="">
+  <label>
+  <input type="radio" name="shirtFormation" value="LooseInside" />
+  <img src="image/normal.gif" height="80px" width="80px">
+</label>
+</div>
+</form>
+</div>
+
+
+
+
+ <div class="col-md-8 layers-viewport" style="width: 665px; left: 0px; top: -1.67958px; margin-left: 100px" >
+
+    <div id="shirtFormate">
+   <img id="sh1"  src="image/new/color.png" alt="" render="false" class="shirt" style="z-index: 1004; margin-top: 2%;position: absolute; left: aUTO; right: 0; top: 0;" >
+    <img id="sh2" src="image/new/fit.png" alt="" render="undefined/" class="" style="z-index: 100;margin-top: 2%;position: absolute;left:auto;right: 0;top: 0;">
+    <img id="sh3" src="image/new/sleeves_short.png" alt="" render="false" class="shirt" style="z-index: 1002; margin-top: 2%;position: absolute;left:auto;right: 0;top: 0;">
+      <img id="pant" src="image/old/pant.png" alt="" render="false" class="pant" style="z-index: 1002; margin-top:  65%;position: absolute;left:auto;right: 0;top: 0;"> 
+</div>
+
+<div id="defaultShirt" >
+  <img id="sh4" src="image/old/necklinesBtn.png" alt="Fit Inside" style="z-index: 1004; margin-top: 2%;position: absolute; left: aUTO; right: 0; top: 0;"  >
+  <img id="sh5" src="image/old/fit.png" alt="Loose Inside" style="z-index: 100;margin-top: 2%;position: absolute;left:auto;right: 0;top: 0;">
+  <img id="sh6" src="image/old/sleeves_long.png" alt="Long sleeves" style="z-index: 1002; margin-top: 2%;position: absolute;left:auto;right: 0;top: 0;"> 
+  <img id="pant" src="image/old/pant.png" alt="" render="false" class="pant" style="z-index: 1002; margin-top:  65%;position: absolute;left:auto;right: 0;top: 0;">
+</div>        
+ 	</div>
+
+
+
+
+  <div class="col-md-2 fabric">
+    <div class="form-group" style="margin-left: 20px" style="">
+  <label>
+  <input type="radio" name="clothtype" value="default" checked />
+  <img src="image/whitefabric.jpg" height="80px" width="80px">
+</label>
+  </div>
+  <div class="form-group" style="margin-left: 20px" style="">
+  <label>
+  <input type="radio" name="clothtype" value="fabric"  />
+  <img src="image/fabric.jpeg" height="80px" width="80px">
+</label>
+  </div>
+  </div>
+ </div>
+
+
+
+
+ <script>
+
+$('#shirtFormate').css('display','none');
+
+  var target = document.getElementById("shirtFormate");
+
+  $('input:radio[name="clothtype"]').change(function(){
+
+    if($(this).val() == 'fabric'){
+      $('#defaultShirt').css('display','none');
+      $('#shirtFormate').css('display','block');
+
+                    $('input:radio[name="shirtFormation"]').change(function(){
+                    if($(this).val() == 'FitInside'){
+                       /*target.innerHTML= "<img id='sh1' src='D:/eZone/Shirt/sleeves_short/fit.png' alt='Fit Inside' style='position:absolute; top:30px; left:40px; width:350px; height:515px;' /> ";*/
+                       $('img#sh2').attr('src','image/new/fit.png');
+                      }
+
+                    else if($(this).val() == 'LooseInside'){
+                       /*target.innerHTML= "<img id='sh1' src='D:/eZone/Shirt/sleeves_short/loose.png' alt='Fit Inside' style='position:absolute; top:30px; left:40px; width:350px; height:515px;' /> ";*/
+                       $('img#sh2').attr('src','image/new/loose.png');
+                    }
+
+                    else if($(this).val() == 'NecklinesBtn'){
+                       $('img#sh1').attr('src','image/new/color.png');
+                    } 
+
+                    else if($(this).val() == 'NecklinesMao'){
+                       $('img#sh1').attr('src','image/new/necklinesMao.png');
+                    } 
+
+                    else if($(this).val() == 'LongSleeves'){
+                      $('img#sh3').attr('src','image/new/sleeves.png');  
+                    } 
+
+                    else if($(this).val() == 'ShortSleeve'){
+                       $('img#sh3').attr('src','image/new/sleeves_short.png'); 
+                    } 
+                    }); 
+
+  }
+
+  if($(this).val() == 'default'){
+      $('#shirtFormate').css('display','none');
+      $('#defaultShirt').css('display','block');
+
+       $('input:radio[name="shirtFormation"]').change(function(){
+                    if($(this).val() == 'FitInside'){
+                       /*target.innerHTML= "<img id='sh1' src='D:/eZone/Shirt/sleeves_short/fit.png' alt='Fit Inside' style='position:absolute; top:30px; left:40px; width:350px; height:515px;' /> ";*/
+                       $('img#sh5').attr('src','image/old/fit.png');
+                      }
+
+                    else if($(this).val() == 'LooseInside'){
+                       /*target.innerHTML= "<img id='sh1' src='D:/eZone/Shirt/sleeves_short/loose.png' alt='Fit Inside' style='position:absolute; top:30px; left:40px; width:350px; height:515px;' /> ";*/
+                       $('img#sh5').attr('src','image/old/loose.png');
+                    }
+
+                    else if($(this).val() == 'NecklinesBtn'){
+                       $('img#sh4').attr('src','image/old/necklinesBtn.png');
+                    } 
+
+                    else if($(this).val() == 'NecklinesMao'){
+                       $('img#sh4').attr('src','image/old/necklinesMao.png');
+                    } 
+
+                    else if($(this).val() == 'LongSleeves'){
+                      $('img#sh6').attr('src','image/old/sleeves_long.png');  
+                    } 
+
+                    else if($(this).val() == 'ShortSleeve'){
+                       $('img#sh6').attr('src','image/old/sleeves_short.png'); 
+                    } 
+                    }); 
+
+    }
+
+}); 
+  
+if($('input:radio[value="default"]').is(':checked')) {
+
+  $('#shirtFormate').css('display','none');
+      $('#defaultShirt').css('display','block');
+
+       $('input:radio[name="shirtFormation"]').change(function(){
+                    if($(this).val() == 'FitInside'){
+                       /*target.innerHTML= "<img id='sh1' src='D:/eZone/Shirt/sleeves_short/fit.png' alt='Fit Inside' style='position:absolute; top:30px; left:40px; width:350px; height:515px;' /> ";*/
+                       $('img#sh5').attr('src','image/old/fit.png');
+                      }
+
+                    else if($(this).val() == 'LooseInside'){
+                       /*target.innerHTML= "<img id='sh1' src='D:/eZone/Shirt/sleeves_short/loose.png' alt='Fit Inside' style='position:absolute; top:30px; left:40px; width:350px; height:515px;' /> ";*/
+                       $('img#sh5').attr('src','image/old/loose.png');
+                    }
+
+                    else if($(this).val() == 'NecklinesBtn'){
+                       $('img#sh4').attr('src','image/old/necklinesBtn.png');
+                    } 
+
+                    else if($(this).val() == 'NecklinesMao'){
+                       $('img#sh4').attr('src','image/old/necklinesMao.png');
+                    } 
+
+                    else if($(this).val() == 'LongSleeves'){
+                      $('img#sh6').attr('src','image/old/sleeves_long.png');  
+                    } 
+
+                    else if($(this).val() == 'ShortSleeve'){
+                       $('img#sh6').attr('src','image/old/sleeves_short.png'); 
+                    } 
+                    }); 
+
+}
+
+if($('input:radio[value="fabric"]').is(':checked')) {
+
+  $('#defaultShirt').css('display','none');
+      $('#shirtFormate').css('display','block');
+
+                    $('input:radio[name="shirtFormation"]').change(function(){
+                    if($(this).val() == 'FitInside'){
+                       /*target.innerHTML= "<img id='sh1' src='D:/eZone/Shirt/sleeves_short/fit.png' alt='Fit Inside' style='position:absolute; top:30px; left:40px; width:350px; height:515px;' /> ";*/
+                       $('img#sh2').attr('src','image/new/fit.png');
+                      }
+
+                    else if($(this).val() == 'LooseInside'){
+                       /*target.innerHTML= "<img id='sh1' src='D:/eZone/Shirt/sleeves_short/loose.png' alt='Fit Inside' style='position:absolute; top:30px; left:40px; width:350px; height:515px;' /> ";*/
+                       $('img#sh2').attr('src','image/new/loose.png');
+                    }
+
+                    else if($(this).val() == 'NecklinesBtn'){
+                       $('img#sh1').attr('src','image/new/color.png');
+                    } 
+
+                    else if($(this).val() == 'NecklinesMao'){
+                       $('img#sh1').attr('src','image/new/necklinesMao.png');
+                    } 
+
+                    else if($(this).val() == 'LongSleeves'){
+                      $('img#sh3').attr('src','image/new/sleeves.png');  
+                    } 
+
+                    else if($(this).val() == 'ShortSleeve'){
+                       $('img#sh3').attr('src','image/new/sleeves_short.png'); 
+                    } 
+                    }); 
+}
+
+  
+</script>
+</body>
+</html>
+
+
